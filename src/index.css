@@ -13,7 +13,7 @@ body {
       sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient( rgba(255 , 255 , 255 , 0), rgba(255, 255, 255, 0), rgba(255, 255, 225, 0)),url('./assts/sunset.jpg');
+  background: url('./assts/bg.jpg');
   background-position:center;
   background-repeat: no-repeat;
   background-size: cover;

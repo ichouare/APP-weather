@@ -1,42 +1,36 @@
 import React  , {useContext} from 'react'
 import '../styleComponents/cityinfo.css'
 import GlobalContext from './GlobalContext'
-import { WiDaySnow  , WiStrongWind , WiHumidity , WiThermometer} from "react-icons/wi";
+import { FaRegTired } from "react-icons/fa";
+
 
 const  CityInfo = () => {
     const {data } = useContext(GlobalContext)
+    const icon = (data.weather) ? data.weather[0].icon :"";
   return (
+    (data.main) ?
     <section>
-<div className='icon_situation'>
-    <WiDaySnow className='icon'/>
-    </div>
     <div className="city_info"> 
-     <h4>{data.name}</h4>
-     <h3>{(data.main) ?`${data.main.temp}° F` : null}</h3>
-     <div>
-     <p>
-     {
-       (data.main) ? <> <span className='bold'> {data.main.feels_like}
-       </span> <WiThermometer className='icon_info'/>  </> : null
-     }
-     </p>
-     <p>
-     {
-       (data.main) ? <> <span className='bold'> {data.main.humidity}
-       </span> <WiHumidity className='icon_info'/>  </> : null
-     }
-     </p>
-     <p>
-     {
-       (data.wind) ? <> <span className='bold'> {data.wind.speed}
-       </span> <WiStrongWind className='icon_info'/>  </> : null
-     }
-     </p>
-     </div>
+    <div>
+     <h2>{data.name}</h2>
+    <span className='country'>{(data.sys) ? `${data.sys.country} `: null}</span>    
     </div>
-    <div></div>
     
-    </section>
+     <h3>{(data.main) && `${Math.round(data.main.temp)}`} <sup>°F</sup></h3>
+     <img className='bold' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} />
+     <p>
+     {
+       (data.weather) ? <> <span className='bold'> {data.weather[0].description}
+       </span>  </> : null
+     }
+     </p>
+    </div>
+
+    </section> : <section>  
+    <FaRegTired  className='icon'/>
+    <span className='error'>is not found</span>
+    <p>Pealse Entre New city Name</p>
+     </section>
   )
 }
 
