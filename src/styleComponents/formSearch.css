@@ -3,9 +3,9 @@
 form input{
     margin: 20px 0px;
     padding:0px 20px 0px 50px;
-    width: 30em;
+    width: 25em;
     height:60px;
-    border-radius: 50px;
+    border-radius: 15px;
     border:1px solid rgba(255 , 255 , 255 , 0.9);
     outline:none;
     font-weight: 500;
